@@ -1,0 +1,33 @@
+volumes:
+  db:
+
+services:
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./site:/var/www/site
+      - ./site.conf:/etc/nginx/conf.d/site.conf:ro
+    working_dir: /var/www/site
+    ports:
+      - 8080:81
+
+  php:
+    user: 1000:1000
+    build:
+      context: ./
+      dockerfile: docker-php
+    volumes:
+      - ./site:/var/www/site
+    working_dir: /var/www/site
+    environment:
+      cookieValidationKey: 7Ewio5CtEzyYOO8n
+
+
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: yii2basic
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - db:/var/lib/postgresql/data

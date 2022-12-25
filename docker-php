@@ -1,0 +1,7 @@
+FROM php:8-fpm-alpine
+
+run apk update && apk add libpq libpq-dev \
+    && docker-php-ext-install  pdo_pgsql \
+    && apk del libpq-dev
+
+run wget https://getcomposer.org/installer && php installer && mv composer.phar /usr/local/bin/composer
