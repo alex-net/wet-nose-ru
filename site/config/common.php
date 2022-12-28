@@ -1,11 +1,16 @@
 <?php
 $appDir = dirname(__DIR__);
 return [
+    'name' => 'Тестовое задание',
+    'language' => 'ru',
     'id' => 'wet-nose-ru',
     'basePath' => $appDir,
     'aliases' => [
         '@app' => $appDir,
         '@bower' => '@vendor/bower-asset',
+    ],
+    'params' => [
+        'MainMenuName' => 'MAIN-MENU',
     ],
     'components' => [
         'db' => [

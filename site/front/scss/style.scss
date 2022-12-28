@@ -1,0 +1,42 @@
+ul.main-menu {margin: 0; padding: 0; display: flex;
+    li {position: relative;margin: 0.2em;list-style: none outside none; white-space: nowrap;
+        &.admin-item {
+            a {color: white; border: 1px solid white;}
+            &.active a { border-color: purple; background: purple;}
+        }
+        a {color: blueviolet;text-decoration: none;}
+        ul {position: absolute;display: none;background: white;z-index: 1;margin-left: 1em;box-shadow: 1px 1px 0.5em;padding: 0.1em 0.25em ;}
+        &:hover > ul {display: block;}
+    }
+}
+
+// страница рубрик ..
+// .rubrics-admin-view  a {text-decoration: none;
+//     &.admin-control {display: inline-block; margin: 0 0.3em;}
+// }
+
+%rubrics-li {list-style: none outside none; cursor: move;
+    a {text-decoration: none;
+        &.admin-control {display: inline-block; margin: 0 0.3em;}
+    }
+}
+
+// стили админки ...
+.rubrics-admin-view {margin: 0.5em 0;
+    li {@extend %rubrics-li;}
+    #s-l-hint {background: lightgreen;}
+    #s-l-placeholder {background: lightblue;}
+}
+
+ul#s-l-base {
+    > li {background: white; box-shadow: 0 0 2em 0.25em; padding: 0 0.5em;}
+    li {@extend %rubrics-li;}
+
+}
+
+.news-list {
+    .item {margin: 0.5em 0;
+        .teaser {font-size: 0.7em;}
+    }
+    .pagination li {margin: auto 0.5em;}
+}

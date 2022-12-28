@@ -1,3 +1,7 @@
 vendor
 runtime
 web/assets/
+
+*.sublime*
+
+node_modules/

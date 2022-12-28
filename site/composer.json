@@ -2,7 +2,9 @@
     "require": {
         "yiisoft/yii2": "~2.0.0",
         "yiisoft/yii2-debug": "^2.1",
-        "bower-asset/jquery": "^3.6"
+        "bower-asset/jquery": "^3.6",
+        "yiisoft/yii2-bootstrap5": "^2.0",
+        "jbroadway/urlify": "^1.2"
     },
     "repositories": [
         {

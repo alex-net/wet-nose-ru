@@ -4,6 +4,7 @@ volumes:
 services:
 
   nginx:
+    container_name: wnr-nginx
     image: nginx:alpine
     volumes:
       - ./site:/var/www/site
@@ -12,7 +13,8 @@ services:
     ports:
       - 8080:81
 
-  php:
+  back:
+    container_name: wnr-back
     user: 1000:1000
     build:
       context: ./
@@ -25,9 +27,19 @@ services:
 
 
   db:
+    container_name: wnr-db
     image: postgres:alpine
     environment:
       POSTGRES_DB: yii2basic
       POSTGRES_PASSWORD: pass
     volumes:
       - db:/var/lib/postgresql/data
+
+  front:
+    container_name: wnr-front
+    image: node:alpine
+    tty: true
+    volumes:
+      - ./site:/var/www/site
+    user: 1000:1000
+    working_dir: /var/www/site/front
