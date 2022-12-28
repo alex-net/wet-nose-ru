@@ -36,6 +36,6 @@ password
 1. Сделать копию репозитария  ( ```git clone ```)
 2. В корне склонированного репозитория запустить ```docker compose up -d ```
 3. Зайти в контейнер php (wnr-back) ``` docker exec -ti  wnr-back sh ```  и внутри выполнить команды ```composer i ```  и ``` ./yii migrate ```
-4. Зайти в контейнер node (wnr-front)  ``` docker exec -ti  [front] sh ``` и собрать стили проектеа ``` npm run build ```
+4. Зайти в контейнер node (wnr-front)  ``` docker exec -ti  wnr-front sh ``` и собрать стили проектеа ``` npm run build ```
 5. В браузере открыть [адрес](http://127.0.0.1:8080), Открыть страницу Вход. Авторизоваться как администратор (логин *admin* и пароль *admin*).
 6. Проверить проект на соотвтетствие ТЗ.
