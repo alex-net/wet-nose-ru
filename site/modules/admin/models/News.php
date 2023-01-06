@@ -58,13 +58,11 @@ class News extends \app\models\News
 
     public function save($data)
     {
-        if ($data &&  !$this->load($data) || !$this->validate()) {
-            Yii::info('err');
+        if ($data && !$this->load($data) || !$this->validate()) {
             return false;
         }
 
         $attrs = $this->getAttributes($this->activeAttributes());
-        Yii::info($attrs, '$attrs');
         if ($this->id) {
             Yii::$app->db->createCommand()->update('{{%news}}', $attrs, ['id' => $this->id])->execute();
         } else {
@@ -86,7 +84,7 @@ class News extends \app\models\News
     {
         $dp =  parent::getList($filter);
         $dp->pagination->pageSize = 20;
-        $dp->sql = 'select id, name, active, created from {{news}}';
+        $dp->sql = 'select n.id, n.name, n.active, n.created, n.rubid, r.name as rubname,  count(c.id) as comments from {{%news}} n left join {{%rubrics}} r on r.id = n.rubid left join {{%comments}} c on c.nid = n.id group by n.id, rubname';
         $dp->params = [];
         return $dp;
     }

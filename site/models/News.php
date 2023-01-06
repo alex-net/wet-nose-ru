@@ -46,7 +46,7 @@ class News extends \yii\base\Model
                 'pageSize' => 3,
             ],
             'sort' => [
-                'attributes' => ['id','created','name'],
+                'attributes' => ['id', 'created', 'name'],
                 'defaultOrder' => ['created' => SORT_DESC],
             ],
         ]);

@@ -18,6 +18,16 @@ echo \yii\grid\GridView::widget([
         ],
         'active:boolean:Опубликовано',
         'created:datetime:Создан',
-
+        [
+            'label' => 'Рубрика',
+            'attribute' => 'rubname',
+            'format' => 'raw',
+            'value' => function($m) {
+                if ($m['rubname']) {
+                    return Html::a($m['rubname'], ['rubric/edit', 'id' => $m['rubid']], ['target' => '_blank']);
+                }
+            },
+        ],
+        'comments:integer:Комментарии',
     ],
 ]);

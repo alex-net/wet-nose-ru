@@ -35,7 +35,7 @@ class m221225_173323_news extends Migration
             'teaser' =>  $this->string(400)->notNull()->defaultValue('')->comment('Краткое содержание'),
             'content' => $this->text()->comment('Содержимоое'),
             'created' => $this->timestamp()->defaultExpression('current_timestamp')->notNull()->comment('дата/время создания'),
-            'rubid' => $this->integer()->notNull()->comment('категория'),
+            'rubid' => $this->integer()->comment('категория'),
         ]);
         $this->addCommentOnTable('{{%news}}', 'Новости');
         foreach (['active', 'created', 'rubid'] as $k) {
@@ -44,7 +44,7 @@ class m221225_173323_news extends Migration
         $this->createIndex("news-name-ind", '{{%news}}', ['name'], true);
         $this->createIndex("news-slug-ind", '{{%news}}', ['slug'], true);
 
-        $this->addForeignKey('news-rubid-fk', '{{%news}}', ['rubid'], '{{%rubrics}}', ['id'], 'restrict', 'cascade');
+        $this->addForeignKey('news-rubid-fk', '{{%news}}', ['rubid'], '{{%rubrics}}', ['id'], 'set null', 'cascade');
 
         $this->createTable('{{%comments}}', [
             'id' => $this->primaryKey()->comment('Ключик коментария'),

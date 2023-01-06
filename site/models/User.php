@@ -4,8 +4,8 @@ namespace app\models;
 
 class User extends \yii\base\Model implements \yii\web\IdentityInterface
 {
-    const LOGIN = 'admin';
-    const PASS = 'admin';
+    const LOGIN = 'login';
+    const PASS = 'password';
     public $id, $name;
 
     /**
